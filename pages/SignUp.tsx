@@ -1,16 +1,20 @@
 import React, { useRef, useState } from 'react';
+
 import Router from 'next/router';
 import Head from 'next/head';
 import { useAtom } from 'jotai';
 import { NextPage } from 'next';
+import Image from 'next/image';
 import atoms from '../util/atoms';
 import useHandleSignIn from '../hooks/useHandleSignIn';
 import useSetFormErrors from '../hooks/useSetFormErrors';
 import handleCreateUser from '../util/handleCreateUser';
 import ProfileType from '../components/Register/ProfileType';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import User from '../components/Register/User';
+
 
 const SignUp: NextPage = () => {
   const [email, setEmail] = React.useState('');
@@ -125,8 +129,7 @@ const SignUp: NextPage = () => {
                     </Swiper>
                 
                     </form> 
-              
-                
+
             </div>
           </div>
           <div className="mt-2 flex flex-col max-w-[350px] justify-center text-center border border-stone-300 bg-white py-5 text-[14px]">

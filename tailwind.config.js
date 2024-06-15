@@ -45,6 +45,10 @@ module.exports = {
         loginImage3: 'fadeInOut3 20s ease-in-out infinite',
         loginImage4: 'fadeInOut4 20s ease-in-out infinite',
       },
+      fontFamily:{
+        sans: ['Poppins'],
+        arial: ['Poppins'],
+      },
       colors: {
         'primary/100': '#e5f3ff',
         'primary/600': '#319Dff',
@@ -77,10 +81,6 @@ module.exports = {
       },
       textShadow: {
         primary: '5px 5px #558ABB;',
-      },
-      fontFamily:{
-        sans: ['Poppins'],
-        arial: ['Poppins'],
       },
     },
   },
