@@ -81,6 +81,7 @@ const Profile: NextPage = () => {
         <title>Profile • Instagram photos and videos</title>
         <meta name="description" content="Instagram Clone" />
         <link rel="icon" href="/instagram.png" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
       </Head>
       <Header page="Profile" />
       {addPhoto ? <AddProfilePhoto setAddPhoto={setAddPhoto} /> : <div />}

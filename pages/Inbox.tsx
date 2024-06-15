@@ -33,6 +33,7 @@ const Inbox: NextPage = () => {
         <title>Instagram • Chats</title>
         <meta name="description" content="Instagram Clone" />
         <link rel="icon" href="/instagram.png" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
       </Head>
       <Header page="Inbox" />
       {createChatRoom ? (
