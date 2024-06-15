@@ -134,14 +134,14 @@ const SignUp: NextPage = () => {
               </form>
             </div>
           </div>
-          <div className="mt-2 flex max-w-[350px] justify-center border border-stone-300 bg-white py-5 text-[14px]">
-            <p>Have an account?</p>
+          <div className="mt-2 flex flex-col max-w-[350px] justify-center text-center border border-stone-300 bg-white py-5 text-[14px]">
+            <p>Já possui uma conta?</p>
             <button
               className="ml-1 font-semibold text-[#0095f6]"
               type="button"
               onClick={() => Router.push('/Login')}
             >
-              Log in
+              Logar
             </button>
           </div>
         </div>
