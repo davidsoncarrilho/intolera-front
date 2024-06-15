@@ -36,6 +36,7 @@ const Explore: NextPage = () => {
         <title>Instagram • Explore</title>
         <meta name="description" content="Instagram Clone" />
         <link rel="icon" href="/instagram.png" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
       </Head>
       <Header page="" />
       <div className="mx-auto my-16 w-full max-w-[600px] bg-white dark:bg-[#1c1c1c]">

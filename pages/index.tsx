@@ -27,6 +27,7 @@ const Home: NextPage = () => {
         <title>Instagram</title>
         <meta name="description" content="Instagram Clone" />
         <link rel="icon" href="/instagram.png" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
       </Head>
       <Header page="Home" />
       <div className="mx-auto flex max-w-[822px] justify-center pb-16 lg:justify-start">
