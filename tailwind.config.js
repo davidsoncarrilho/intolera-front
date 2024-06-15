@@ -45,7 +45,6 @@ module.exports = {
         loginImage3: 'fadeInOut3 20s ease-in-out infinite',
         loginImage4: 'fadeInOut4 20s ease-in-out infinite',
       },
-
       fontFamily:{
         sans: ['Poppins'],
         arial: ['Poppins'],
