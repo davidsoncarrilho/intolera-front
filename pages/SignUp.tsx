@@ -15,6 +15,7 @@ import ProfileType from '../components/Register/ProfileType';
 import 'swiper/css';
 import User from '../components/Register/User';
 import Address from '../components/Register/Address';
+import RegisterTitle from '../components/Register/RegisterTitle';
 
 const SignUp: NextPage = () => {
   const [email, setEmail] = React.useState('');
@@ -105,7 +106,29 @@ const SignUp: NextPage = () => {
                   </SwiperSlide>
 
                   <SwiperSlide key={1}>
-                    <User />
+                    <div className='flex flex-col justify-around'>
+                      <User />
+                      <div className='flex flex-row justify-between items-end'>
+                        <button
+                          onClick={() => swiperRef.current.slidePrev()}
+                          className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
+                           font-semibold hover:bg-[#abddff]"
+                        >
+                          Anterior
+                        </button>
+                        <button
+                          onClick={() => swiperRef.current.slideNext()}
+                          className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
+                           font-semibold hover:bg-[#abddff]"
+                        >
+                          Próximo
+                        </button>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+
+                  <SwiperSlide key={2}>
+                    <Address></Address>
                     <button
                       onClick={() => swiperRef.current.slidePrev()}
                       className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
@@ -120,19 +143,20 @@ const SignUp: NextPage = () => {
                     >
                       Próximo
                     </button>
+                  </SwiperSlide>
+
+                  <SwiperSlide key={3}>
                     <button
                       className={`${emailFormErrors === '' && passwordFormErrors === ''
-                          ? 'bg-[#0095f6]'
-                          : 'pointer-events-none cursor-default bg-[#abddff]'
+                        ? 'bg-[#0095f6]'
+                        : 'pointer-events-none cursor-default bg-[#abddff]'
                         } my-5 w-full rounded-[4px]  px-2 py-1 text-sm font-semibold text-white`}
                       type="submit"
                     >
                       Cadastrar
                     </button>
                   </SwiperSlide>
-                  <SwiperSlide key={2}>
-                    <div>asdasdsa</div>
-                  </SwiperSlide>
+
                 </Swiper>
               </form>
             </div>

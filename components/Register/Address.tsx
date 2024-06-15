@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RegisterTitle from "./RegisterTitle";
 
 function Address({ }) {
     const [state, setState] = useState('');
@@ -11,6 +12,7 @@ function Address({ }) {
 
         <div className="flex flex-col gap-5">
 
+            <RegisterTitle title='ENDEREÇO'></RegisterTitle>
             <label htmlFor="signInPageState">
                 {' '}
                 <input
