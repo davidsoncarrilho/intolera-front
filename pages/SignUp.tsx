@@ -108,7 +108,7 @@ const SignUp: NextPage = () => {
                   <SwiperSlide key={1}>
                     <div className='flex flex-col justify-around'>
                       <User />
-                      <div className='flex flex-row justify-between items-end'>
+                      <div className='flex flex-row flex-grow-0 justify-between items-end'>
                         <button
                           onClick={() => swiperRef.current.slidePrev()}
                           className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
@@ -173,7 +173,7 @@ const SignUp: NextPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
