@@ -90,11 +90,10 @@ const Login: NextPage = () => {
                   {passwordFormErrors}
                 </p>
                 <button
-                  className={`${
-                    emailFormErrors === '' && passwordFormErrors === ''
+                  className={`${emailFormErrors === '' && passwordFormErrors === ''
                       ? 'bg-[#0095f6]'
                       : 'pointer-events-none cursor-default bg-[#abddff]'
-                  } my-5 w-full rounded-[4px]  px-2 py-1 text-sm font-semibold text-white`}
+                    } my-5 w-full rounded-[4px]  px-2 py-1 text-sm font-semibold text-white`}
                   type="submit"
                 >
                   Logar
