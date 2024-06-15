@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -43,6 +44,10 @@ module.exports = {
         loginImage2: 'fadeInOut2 20s ease-in-out infinite',
         loginImage3: 'fadeInOut3 20s ease-in-out infinite',
         loginImage4: 'fadeInOut4 20s ease-in-out infinite',
+      },
+      fontFamily:{
+        sans: ['Poppins'],
+        arial: ['Poppins'],
       },
     },
   },

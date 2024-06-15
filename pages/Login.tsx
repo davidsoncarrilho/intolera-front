@@ -35,6 +35,7 @@ const Login: NextPage = () => {
         <title>Instagram • Login</title>
         <meta name="description" content="Instagram Clone" />
         <link rel="icon" href="/instagram.png" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
       </Head>
       <div className="flex min-h-[100vh] w-full items-center justify-center bg-[#fafafa]">
         <div>
@@ -98,7 +99,7 @@ const Login: NextPage = () => {
                 >
                   Logar
                 </button>
-                <div className="mb-5 flex h-0 items-center justify-center">
+                {/* <div className="mb-5 flex h-0 items-center justify-center">
                   <div className="w-full border-b border-stone-300" />
                   <p className="mx-2 text-sm font-semibold text-[#6d6d6d]">
                     OR
@@ -123,18 +124,18 @@ const Login: NextPage = () => {
                   }
                 >
                   Guest Account
-                </button>
+                </button> */}
               </form>
             </div>
           </div>
-          <div className="mt-2 flex max-w-[350px] justify-center border border-stone-300 bg-white py-5 text-[14px]">
-            <p>Do not have an account?</p>
+          <div className="mt-2 flex max-w-[350px] flex-col border text-center border-stone-300 bg-white py-5 text-[14px]">
+            <p>Ainda não possui uma conta?</p>
             <button
               className="ml-1 font-semibold text-[#0095f6]"
               type="button"
               onClick={() => Router.push('/SignUp')}
             >
-              Sign up
+              Cadastre-se
             </button>
           </div>
         </div>
