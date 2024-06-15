@@ -8,7 +8,7 @@ import useSetFormErrors from '../hooks/useSetFormErrors';
 import atoms from '../util/atoms';
 import useHandleSignIn from '../hooks/useHandleSignIn';
 import handleSignIn from '../util/handleSignIn';
-import InstagramSVG from '../components/svgComps/InstagramSVG';
+import LogoLogin from '../public/intoleraLogin.svg';
 
 const Login: NextPage = () => {
   const [listeners] = useAtom(atoms.listeners);
@@ -38,61 +38,9 @@ const Login: NextPage = () => {
       </Head>
       <div className="flex min-h-[100vh] w-full items-center justify-center bg-[#fafafa]">
         <div>
-          <div className="relative hidden h-[590px] overflow-hidden lg:block">
-            <Image
-              priority
-              src="/loginFrame.png"
-              alt="instagram"
-              height={635}
-              width={465}
-            />
-            <picture>
-              <img src="/loginFrame.png" alt="instagram" />
-            </picture>
-            <div className="absolute top-[26px] right-14 h-full w-full">
-              <div className="relative ">
-                <div className="absolute top-0 right-0 h-[541px] w-[250px] animate-loginImage1 opacity-0">
-                  <Image
-                    priority
-                    src="/loginImg1.png"
-                    alt="instagram"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className="absolute top-0 right-0 h-[541px] w-[250px] animate-loginImage2 opacity-0">
-                  <Image
-                    src="/loginImg2.png"
-                    alt="instagram"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className="absolute top-0 right-0 h-[541px] w-[250px] animate-loginImage3 opacity-0">
-                  <Image
-                    src="/loginImg3.png"
-                    alt="instagram"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-
-                <div className="absolute top-0 right-0 h-[541px] w-[250px] animate-loginImage4 opacity-0">
-                  <Image
-                    src="/loginImg4.png"
-                    alt="instagram"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
           <div className="flex max-w-[350px] flex-col items-center justify-center border border-stone-300 bg-white">
             <div className="h-auto w-[175px] py-10">
-              <InstagramSVG disableDarkMode white={false} />
+              <Image src={LogoLogin} />
             </div>
             <div className="w-full px-5 sm:px-10">
               <form
@@ -112,10 +60,10 @@ const Login: NextPage = () => {
                   })
                 }
               >
-                <label htmlFor="signInPageEmail">
-                  {' '}
+                <label htmlFor="signInPageEmail" className="font-medium">
+                  Email:
                   <input
-                    className=" w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
+                    className="w-full shadow-md rounded-md border border-stone-300 bg-[#fafafa]  px-2 py-[7px] text-sm font-normal focus:outline-stone-400"
                     type="email"
                     id="signInPageEmail"
                     value={email}
@@ -126,10 +74,10 @@ const Login: NextPage = () => {
                 <p className="h-[20px] max-w-[220px] pb-2 text-[10px] text-red-600">
                   {emailFormErrors}
                 </p>
-                <label htmlFor="signInPagePassword">
-                  {' '}
+                <label htmlFor="signInPagePassword" className="font-medium">
+                  Senha:
                   <input
-                    className="w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
+                    className="w-full rounded-md border shadow-md border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-stone-400"
                     type="password"
                     id="signInPagePassword"
                     value={password}
