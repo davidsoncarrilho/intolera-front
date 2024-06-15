@@ -5,13 +5,13 @@ export const emailValidate = (values: string) => {
   const regexTwo = /@/;
 
   if (values.length === 0) {
-    errors = 'Email is required!';
+    errors = 'Email é obrigatório!';
   } else if (!regexTwo.test(values)) {
-    errors = 'Please include an "@" in your email address';
+    errors = 'O caractere "@" é necessário em email!';
   } else if (!regex.test(values)) {
-    errors = 'Please use a valid email address!';
+    errors = 'Por favor use um e-mail válido!';
   } else if (values.length > 30) {
-    errors = 'Email address cannot exceed more than 30 characters';
+    errors = 'O e-mail não pode ser maior que 30 caracteres!';
   }
   return errors;
 };
@@ -22,15 +22,15 @@ export const passwordValidate = (values: string) => {
   const regexNumbers = /^(?=.*[0-9])/;
 
   if (values.length === 0) {
-    errors = 'Password is required!';
+    errors = 'Senha é obrigatório!';
   } else if (!regexLetters.test(values)) {
-    errors = 'Password must contain atleast one lowercase and uppercase letter';
+    errors = 'Senha precisa conter ao menos 1 caractere minúsculo e 1 maiúsculo!';
   } else if (!regexNumbers.test(values)) {
-    errors = 'Password must contain atleast one number';
+    errors = 'Senha precisa conter ao menos 1 número!';
   } else if (values.length < 8) {
-    errors = 'Password be must be eight characters or longer';
+    errors = 'Senha precisar conter no mínimo 8 caracteres!';
   } else if (values.length > 30) {
-    errors = 'Passwrod cannot exceed more than 30 characters';
+    errors = 'Senha não pode conter mais de 30 caracteres!';
   }
 
   return errors;
@@ -41,14 +41,14 @@ export const usernameValidate = (values: string) => {
   const regexLetters = /^[a-zA-Z]+$/;
 
   if (values.length === 0) {
-    errors = 'Username is required!';
+    errors = 'Usuário é obrigatório!';
   } else if (!regexLetters.test(values)) {
     errors =
-      'Username must contain atleast one lowercase, uppercase letter, and only alphabetic characters';
+      'Usuário precisa conter no mínimo 1 letra minúscula, 1 maiúscula e comente caracteres alfabéticos!';
   } else if (values.length < 5) {
-    errors = 'Password be must be five characters or longer';
+    errors = 'Senha precisa conter no mínimo 5 caracteres!';
   } else if (values.length > 13) {
-    errors = 'Password cannot exceed more than 13 characters';
+    errors = 'Senha não pode conter mais de 13 caracteres!';
   }
 
   return errors;

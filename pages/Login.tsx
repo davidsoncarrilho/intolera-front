@@ -96,7 +96,7 @@ const Login: NextPage = () => {
                   } my-5 w-full rounded-[4px]  px-2 py-1 text-sm font-semibold text-white`}
                   type="submit"
                 >
-                  Log In
+                  Logar
                 </button>
                 <div className="mb-5 flex h-0 items-center justify-center">
                   <div className="w-full border-b border-stone-300" />
@@ -114,7 +114,7 @@ const Login: NextPage = () => {
                       listeners,
                       passwordFormErrors,
                       emailFormErrors,
-                      email,
+                      emailnp,
                       password,
                       guest: true,
                       setIsSubmit,
