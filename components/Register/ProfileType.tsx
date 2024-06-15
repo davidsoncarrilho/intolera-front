@@ -1,5 +1,7 @@
-import { useState } from 'react';
 import Image from 'next/image';
+import Router from 'next/router';
+import { useState } from 'react';
+
 import LogoLogin from '../../public/intoleraLogin.svg';
 
 function ProfileType() {
@@ -10,7 +12,6 @@ function ProfileType() {
   };
 
   return (
-    
     <div className="flex max-w-[350px] flex-col items-center justify-center">
       <div className="h-auto w-[230px] py-8">
             <Image src={LogoLogin} alt="Logo Intolera" />
@@ -50,7 +51,6 @@ function ProfileType() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
