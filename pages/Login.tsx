@@ -39,8 +39,8 @@ const Login: NextPage = () => {
       <div className="flex min-h-[100vh] w-full items-center justify-center bg-[#fafafa]">
         <div>
           <div className="flex max-w-[350px] flex-col items-center justify-center border border-stone-300 bg-white">
-            <div className="h-auto w-[175px] py-10">
-              <Image src={LogoLogin} />
+            <div className="h-auto w-[230px] py-8">
+              <Image src={LogoLogin} alt="Logo Intolera" />
             </div>
             <div className="w-full px-5 sm:px-10">
               <form
@@ -63,7 +63,7 @@ const Login: NextPage = () => {
                 <label htmlFor="signInPageEmail" className="font-medium">
                   Email:
                   <input
-                    className="w-full shadow-md rounded-md border border-stone-300 bg-[#fafafa]  px-2 py-[7px] text-sm font-normal focus:outline-stone-400"
+                    className="w-full rounded-md border border-stone-300 bg-[#fafafa] px-2  py-[7px] text-sm font-normal shadow-md focus:outline-stone-400"
                     type="email"
                     id="signInPageEmail"
                     value={email}
@@ -77,7 +77,7 @@ const Login: NextPage = () => {
                 <label htmlFor="signInPagePassword" className="font-medium">
                   Senha:
                   <input
-                    className="w-full rounded-md border shadow-md border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-stone-400"
+                    className="w-full rounded-md border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm shadow-md focus:outline-stone-400"
                     type="password"
                     id="signInPagePassword"
                     value={password}
