@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import RegisterTitle from './RegisterTitle';
+import Button from '../Button';
 
-function UseTerms(params: type) {
+function UseTerms() {
   const [useTerms, setUseTerms] = useState(false);
   return (
     <div>
@@ -17,7 +18,7 @@ function UseTerms(params: type) {
           minus reiciendis enim.
         </span>
       </div>
-      <div className="flex items-center mt-2 p-1">
+      <div className="mt-2 flex items-center p-1">
         <input
           id="default-checkbox"
           type="checkbox"
@@ -30,6 +31,8 @@ function UseTerms(params: type) {
         <span className="ml-2 text-sm font-medium text-gray-900 hover:underline dark:text-gray-300 ">
           Li e aceito os Temos de Uso
         </span>
+
+        <Button type="submit" label="Próximo" disabled={!useTerms} />
       </div>
     </div>
   );

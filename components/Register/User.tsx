@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState, useEffect } from 'react';
 import RegisterTitle from './RegisterTitle';
 import InputField from '../InputField';
 import Button from '../Button';
@@ -14,6 +15,19 @@ type UserProps = {
 
 function User({ swiperRef, data, updateFieldHandler }: UserProps) {
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isFormFilled = Boolean(
+      data.username && data.email && data.password && confirmPassword
+    );
+    const isPasswordMatch = data.password === confirmPassword;
+
+    setPasswordError(isPasswordMatch ? '' : 'As senhas não coincidem.');
+    setIsFormValid(isFormFilled && isPasswordMatch);
+  }, [data, confirmPassword]);
+
   return (
     <>
       <div>
@@ -43,22 +57,27 @@ function User({ swiperRef, data, updateFieldHandler }: UserProps) {
             onChange={updateFieldHandler}
             placeholder="Password"
           />
-          <InputField
-            id="signInPageConfirmPassword"
-            type="password"
-            label="Confirmar Senha:"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirm Password"
-          />
+          <div>
+            <label className="font-semibold">Confirmar Senha:</label>
+            <input
+              className="w-full rounded-md border border-stone-300 bg-[#fafafa] px-2 py-[7px]  text-sm font-normal shadow-md hover:border-primary/700 focus:outline-primary/700 "
+              type="password"
+              id="signInPageConfirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm Password"
+            />
+          </div>
+          {passwordError && <p className="text-red-500">{passwordError}</p>}
         </div>
       </div>
       <div className="mt-32 flex space-x-4">
         <Button
           onClick={() => swiperRef.current.slidePrev()}
           label="Anterior"
+          disabled={isFormValid}
         />
-        <Button type="submit" label="Próximo" />
+        <Button type="submit" label="Próximo" disabled={!isFormValid} />
       </div>
     </>
   );

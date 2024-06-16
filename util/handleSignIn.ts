@@ -27,22 +27,20 @@ async function handleSignIn({
 
   if (passwordFormErrors === '' && emailFormErrors === '') {
     try {
-      const url = process.env.API_URL_HML + 'auth/login';
+      const url = `${process.env.API_URL_HML}auth/login`;
       const data = {
-        email: email,
-        password: password
-      }
+        email,
+        password,
+      };
 
-      await axios.post(url, data,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+      await axios.post(url, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
       setIsSubmit(true);
-    }
-    catch (error) {
+    } catch (error) {
       setPasswordFormErrors(error.message);
     }
   }

@@ -14,6 +14,7 @@ import Address from '../components/Register/Address';
 
 import Button from '../components/Button';
 import UseTerms from '../components/Register/UseTerms';
+import PDFCertificate from '../components/Register/PDFCertificate';
 
 type FormFields = {
   userType: string;
@@ -100,11 +101,15 @@ const SignUp: NextPage = () => {
                       data={data}
                       updateFieldHandler={updateFieldHandler}
                     />
-                    <Button type="submit" label="Próximo" />
+                    <Button type="submit" label="Próximo" disabled={false} />
                   </SwiperSlide>
 
                   <SwiperSlide key={1}>
-                    <User swiperRef={swiperRef} data={data} updateFieldHandler={updateFieldHandler} />
+                    <User
+                      swiperRef={swiperRef}
+                      data={data}
+                      updateFieldHandler={updateFieldHandler}
+                    />
                   </SwiperSlide>
 
                   <SwiperSlide key={2}>
@@ -116,7 +121,11 @@ const SignUp: NextPage = () => {
                   </SwiperSlide>
 
                   <SwiperSlide key={3}>
-                    <UseTerms />
+                    <UseTerms swiperRef={swiperRef} />
+                  </SwiperSlide>
+
+                  <SwiperSlide key={4}>
+                    <PDFCertificate />
                   </SwiperSlide>
                 </Swiper>
               </form>
@@ -134,8 +143,21 @@ const SignUp: NextPage = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
 export default SignUp;
+
+// const [value, setPdfValue] = useState();
+// const handlePdfSelect = (e) => {
+//   const file = e.target.files[0]; // obtém o primeiro arquivo selecionado
+//   setPdfValue(file); // atualiza o estado com o arquivo selecionado
+// };
+// console.log(value, value);
+
+// <input
+//   type="file"
+//   accept=".pdf" // limita a seleção a arquivos PDF
+//   onChange={handlePdfSelect} // chama a função handlePdfSelect quando o arquivo é selecionado
+// />;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import RegisterTitle from './RegisterTitle';
 import InputField from '../InputField';
 import Button from '../Button';
@@ -15,6 +15,16 @@ type AddressProps = {
 };
 
 function Address({ swiperRef, data, updateFieldHandler }: AddressProps) {
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isFormFilled = Boolean(
+      data.state && data.city && data.street && data.postalCode && data.phone
+    );
+    setIsFormValid(isFormFilled);
+  }, [data]);
+
+
   return (
     <>
       <div>
@@ -67,7 +77,7 @@ function Address({ swiperRef, data, updateFieldHandler }: AddressProps) {
           onClick={() => swiperRef.current.slidePrev()}
           label="Anterior"
         />
-        <Button type="submit" label="Próximo" />
+        <Button type="submit" label="Próximo" disabled={!isFormValid} />
       </div>
     </>
   );
