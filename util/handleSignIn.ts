@@ -1,6 +1,4 @@
-import React from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import guestAccess from './guestAccess';
+import axios from 'axios';
 
 interface Props {
   e: any;
@@ -14,7 +12,7 @@ interface Props {
   setPasswordFormErrors: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function handleSignIn({
+async function handleSignIn({
   e,
   listeners,
   passwordFormErrors,
@@ -26,33 +24,27 @@ function handleSignIn({
   setPasswordFormErrors,
 }: Props) {
   e.preventDefault();
-  const auth = getAuth();
 
-  // removes initial firebase auth listener from app load
-  listeners.forEach((unsubscribe: any) => unsubscribe());
+  if (passwordFormErrors === '' && emailFormErrors === '') {
+    try {
+      const url = process.env.API_URL_HML + 'auth/login';
+      const data = {
+        email: email,
+        password: password
+      }
 
-  if (guest) {
-    signInWithEmailAndPassword(
-      auth,
-      guestAccess().email,
-      guestAccess().password
-    )
-      .then(() => {
-        // Signed in
-        setIsSubmit(true);
-      })
-      .catch((error) => {
-        setPasswordFormErrors(error.message);
-      });
-  } else if (passwordFormErrors === '' && emailFormErrors === '') {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        // Signed in
-        setIsSubmit(true);
-      })
-      .catch((error) => {
-        setPasswordFormErrors(error.message);
-      });
+      await axios.post(url, data,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+      setIsSubmit(true);
+    }
+    catch (error) {
+      setPasswordFormErrors(error.message);
+    }
   }
 }
 

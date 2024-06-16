@@ -134,7 +134,7 @@ const SignUp: NextPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
