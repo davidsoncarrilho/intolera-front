@@ -1,45 +1,60 @@
+/* eslint-disable react/button-has-type */
 import React, { useRef, useState } from 'react';
 
 import Router from 'next/router';
 import Head from 'next/head';
-import { useAtom } from 'jotai';
 import { NextPage } from 'next';
-import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import atoms from '../util/atoms';
-import useHandleSignIn from '../hooks/useHandleSignIn';
-import useSetFormErrors from '../hooks/useSetFormErrors';
 import handleCreateUser from '../util/handleCreateUser';
 import ProfileType from '../components/Register/ProfileType';
 
 import 'swiper/css';
 import User from '../components/Register/User';
 import Address from '../components/Register/Address';
-import RegisterTitle from '../components/Register/RegisterTitle';
+
+import Button from '../components/Button';
+import UseTerms from '../components/Register/UseTerms';
+
+type FormFields = {
+  userType: string;
+  username: string;
+  email: string;
+  password: string;
+  state: string;
+  city: string;
+  street: string;
+  postalCode: string;
+  phone: string;
+  certificate: string;
+};
+
+const formTemplate: FormFields = {
+  userType: '',
+  username: '',
+  email: '',
+  password: '',
+  state: '',
+  city: '',
+  street: '',
+  postalCode: '',
+  phone: '',
+  certificate: '',
+};
 
 const SignUp: NextPage = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [username, setUsername] = React.useState('');
-  const [emailFormErrors, setEmailFormErrors] = React.useState('');
-  const [passwordFormErrors, setPasswordFormErrors] = React.useState('');
-  const [usernameFormErrors, setUsernameFormErrors] = React.useState('');
-  const [isSubmit, setIsSubmit] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   const swiperRef = useRef(null);
+  const [data, setData] = useState(formTemplate);
+  console.log(data);
 
-  const [listeners] = useAtom(atoms.listeners);
+  const updateFieldHandler = (key: string, value: string) => {
+    setData((prev) => ({ ...prev, [key]: value }));
+  };
 
-  useSetFormErrors({
-    email,
-    password,
-    username,
-    setEmailFormErrors,
-    setPasswordFormErrors,
-    setUsernameFormErrors,
-  });
-
-  useHandleSignIn({ isSubmit });
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    swiperRef.current.slideNext();
+  };
 
   if (loading) {
     return (
@@ -62,28 +77,14 @@ const SignUp: NextPage = () => {
           rel="stylesheet"
         />
       </Head>
-      <div className="flex min-h-[100vh] w-full items-center justify-center bg-[#fafafa]">
+      <div className="flex min-h-[100vh] w-full items-center justify-center bg-[#fafafa] ">
         <div>
           <div className="flex max-w-[350px] flex-col items-center justify-center border border-stone-300 bg-white">
             <div className="w-full px-10">
               <form
                 action=""
                 className="signInPageFormContainer"
-                onSubmit={(e: any) =>
-                  handleCreateUser({
-                    e,
-                    listeners,
-                    username,
-                    email,
-                    password,
-                    passwordFormErrors,
-                    emailFormErrors,
-                    usernameFormErrors,
-                    setIsSubmit,
-                    setLoading,
-                    setPasswordFormErrors,
-                  })
-                }
+                onSubmit={handleFormSubmit}
               >
                 <Swiper
                   slidesPerView={1}
@@ -95,68 +96,28 @@ const SignUp: NextPage = () => {
                   spaceBetween={40}
                 >
                   <SwiperSlide key={0}>
-                    <ProfileType />
-                    <button
-                      onClick={() => swiperRef.current.slideNext()}
-                      className="my-5 w-full rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
-                           font-semibold hover:bg-[#abddff]"
-                    >
-                      Próximo
-                    </button>
+                    <ProfileType
+                      data={data}
+                      updateFieldHandler={updateFieldHandler}
+                    />
+                    <Button type="submit" label="Próximo" />
                   </SwiperSlide>
 
                   <SwiperSlide key={1}>
-                    <div className='flex flex-col justify-around'>
-                      <User />
-                      <div className='flex flex-row justify-between items-end'>
-                        <button
-                          onClick={() => swiperRef.current.slidePrev()}
-                          className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
-                           font-semibold hover:bg-[#abddff]"
-                        >
-                          Anterior
-                        </button>
-                        <button
-                          onClick={() => swiperRef.current.slideNext()}
-                          className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
-                           font-semibold hover:bg-[#abddff]"
-                        >
-                          Próximo
-                        </button>
-                      </div>
-                    </div>
+                    <User swiperRef={swiperRef} data={data} updateFieldHandler={updateFieldHandler} />
                   </SwiperSlide>
 
                   <SwiperSlide key={2}>
-                    <Address></Address>
-                    <button
-                      onClick={() => swiperRef.current.slidePrev()}
-                      className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
-                           font-semibold hover:bg-[#abddff]"
-                    >
-                      Anterior
-                    </button>
-                    <button
-                      onClick={() => swiperRef.current.slideNext()}
-                      className="my-5 w-1/2 rounded-[4px]  bg-[#0095f6] px-2 py-1 text-sm
-                           font-semibold hover:bg-[#abddff]"
-                    >
-                      Próximo
-                    </button>
+                    <Address
+                      swiperRef={swiperRef}
+                      data={data}
+                      updateFieldHandler={updateFieldHandler}
+                    />
                   </SwiperSlide>
 
                   <SwiperSlide key={3}>
-                    <button
-                      className={`${emailFormErrors === '' && passwordFormErrors === ''
-                        ? 'bg-[#0095f6]'
-                        : 'pointer-events-none cursor-default bg-[#abddff]'
-                        } my-5 w-full rounded-[4px]  px-2 py-1 text-sm font-semibold text-white`}
-                      type="submit"
-                    >
-                      Cadastrar
-                    </button>
+                    <UseTerms />
                   </SwiperSlide>
-
                 </Swiper>
               </form>
             </div>

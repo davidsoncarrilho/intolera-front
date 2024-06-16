@@ -1,64 +1,67 @@
-import { useState } from "react";
-import RegisterTitle from "./RegisterTitle";
+import React, { useState } from 'react';
+import RegisterTitle from './RegisterTitle';
+import InputField from '../InputField';
+import Button from '../Button';
 
-function User({ }) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const [emailFormErrors, setEmailFormErrors] = useState('');
-    const [passwordFormErrors, setPasswordFormErrors] = useState('');
-    const [usernameFormErrors, setUsernameFormErrors] = useState('');
+type UserProps = {
+  data: {
+    username: string;
+    email: string;
+    password: string;
+  };
+  updateFieldHandler: (key: string, value: string) => void;
+};
 
-    return (
-
-        <div>
-
-            <RegisterTitle title='CADASTRO'></RegisterTitle>
-            <label htmlFor="signInPageUserName">
-                {' '}
-                <input
-                    className="w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="text"
-                    id="signInPageUserName"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
-                />
-            </label>
-            <p className="h-[30px] text-[10px] text-red-600">
-                {usernameFormErrors}
-            </p>
-            <label htmlFor="signInPageEmail">
-                {' '}
-                <input
-                    className=" w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="email"
-                    id="signInPageEmail"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email address"
-                />
-            </label>
-            <p className="h-[20px] pb-2 text-[10px] text-red-600">
-                {emailFormErrors}
-            </p>
-            <label htmlFor="signInPagePassword">
-                {' '}
-                <input
-                    className="w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="password"
-                    id="signInPagePassword"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                />
-            </label>
-            <p className="h-[20px] text-[10px] text-red-600">
-                {passwordFormErrors}
-            </p>
-
+function User({ swiperRef, data, updateFieldHandler }: UserProps) {
+  const [confirmPassword, setConfirmPassword] = useState('');
+  return (
+    <>
+      <div>
+        <RegisterTitle title="CADASTRO" />
+        <div className="flex flex-col gap-4">
+          <InputField
+            id="username"
+            type="text"
+            label="Nome de Usuário:"
+            value={data.username || ''}
+            onChange={updateFieldHandler}
+            placeholder="Username"
+          />
+          <InputField
+            id="email"
+            type="email"
+            label="Email:"
+            value={data.email}
+            onChange={updateFieldHandler}
+            placeholder="Email address"
+          />
+          <InputField
+            id="password"
+            type="password"
+            label="Senha:"
+            value={data.password}
+            onChange={updateFieldHandler}
+            placeholder="Password"
+          />
+          <InputField
+            id="signInPageConfirmPassword"
+            type="password"
+            label="Confirmar Senha:"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
+          />
         </div>
-    );
+      </div>
+      <div className="mt-32 flex space-x-4">
+        <Button
+          onClick={() => swiperRef.current.slidePrev()}
+          label="Anterior"
+        />
+        <Button type="submit" label="Próximo" />
+      </div>
+    </>
+  );
 }
 
 export default User;

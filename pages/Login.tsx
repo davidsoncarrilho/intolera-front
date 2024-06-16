@@ -35,7 +35,10 @@ const Login: NextPage = () => {
         <title>Instagram • Login</title>
         <meta name="description" content="Instagram Clone" />
         <link rel="icon" href="/instagram.png" />
-        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Poppins"
+          rel="stylesheet"
+        />
       </Head>
       <div className="flex min-h-[100vh] w-full items-center justify-center bg-[#fafafa]">
         <div>
@@ -64,7 +67,7 @@ const Login: NextPage = () => {
                 <label htmlFor="signInPageEmail" className="font-medium">
                   Email:
                   <input
-                    className="w-full rounded-md border border-stone-300 bg-[#fafafa] px-2  py-[7px] text-sm font-normal shadow-md focus:outline-stone-400"
+                    className="w-full rounded-md border border-stone-300 bg-[#fafafa] px-2 py-[7px]  text-sm font-normal shadow-md hover:border-primary/700 focus:outline-primary/700"
                     type="email"
                     id="signInPageEmail"
                     value={email}
@@ -78,7 +81,7 @@ const Login: NextPage = () => {
                 <label htmlFor="signInPagePassword" className="font-medium">
                   Senha:
                   <input
-                    className="w-full rounded-md border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm shadow-md focus:outline-stone-400"
+                    className="w-full rounded-md border border-stone-300 bg-[#fafafa] px-2 py-[7px]  text-sm font-normal shadow-md hover:border-primary/700 focus:outline-primary/700"
                     type="password"
                     id="signInPagePassword"
                     value={password}
@@ -90,10 +93,11 @@ const Login: NextPage = () => {
                   {passwordFormErrors}
                 </p>
                 <button
-                  className={`${emailFormErrors === '' && passwordFormErrors === ''
+                  className={`${
+                    emailFormErrors === '' && passwordFormErrors === ''
                       ? 'bg-[#0095f6]'
                       : 'pointer-events-none cursor-default bg-[#abddff]'
-                    } my-5 w-full rounded-[4px]  px-2 py-1 text-sm font-semibold text-white`}
+                  } my-5 w-full rounded-[4px]  px-2 py-1 text-sm font-semibold text-white`}
                   type="submit"
                 >
                   Logar
@@ -127,7 +131,7 @@ const Login: NextPage = () => {
               </form>
             </div>
           </div>
-          <div className="mt-2 flex max-w-[350px] flex-col border text-center border-stone-300 bg-white py-5 text-[14px]">
+          <div className="mt-2 flex max-w-[350px] flex-col border border-stone-300 bg-white py-5 text-center text-[14px]">
             <p>Ainda não possui uma conta?</p>
             <button
               className="ml-1 font-semibold text-[#0095f6]"

@@ -1,76 +1,76 @@
-import { useState } from "react";
-import RegisterTitle from "./RegisterTitle";
+import React from 'react';
+import RegisterTitle from './RegisterTitle';
+import InputField from '../InputField';
+import Button from '../Button';
 
-function Address({ }) {
-    const [state, setState] = useState('');
-    const [city, setCity] = useState('');
-    const [street, setStreet] = useState('');
-    const [postCode, setPostCode] = useState('');
-    const [phone, setPhone] = useState('');
+type AddressProps = {
+  data: {
+    state: string;
+    city: string;
+    street: string;
+    postalCode: string;
+    phone: string;
+  };
+  updateFieldHandler: (key: string, value: string) => void;
+};
 
-    return (
-
-        <div className="flex flex-col gap-5">
-
-            <RegisterTitle title='ENDEREÇO'></RegisterTitle>
-            <label htmlFor="signInPageState">
-                {' '}
-                <input
-                    className="w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="text"
-                    id="signInPageState"
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                    placeholder="Estado"
-                />
-            </label>
-            <label htmlFor="signInPageCity">
-                {' '}
-                <input
-                    className=" w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="text"
-                    id="signInPageCity"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="Cidade"
-                />
-            </label>
-            <label htmlFor="signInPageStreet">
-                {' '}
-                <input
-                    className="w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="text"
-                    id="signInPageStreet"
-                    value={street}
-                    onChange={(e) => setStreet(e.target.value)}
-                    placeholder="Rua"
-                />
-            </label>
-            <label htmlFor="signInPagePostCode">
-                {' '}
-                <input
-                    className="w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="text"
-                    id="signInPagePostCode"
-                    value={postCode}
-                    onChange={(e) => setPostCode(e.target.value)}
-                    placeholder="CEP"
-                />
-            </label>
-            <label htmlFor="signInPagePhone">
-                {' '}
-                <input
-                    className="w-full border border-stone-300 bg-[#fafafa] px-2 py-[7px] text-sm focus:outline-none"
-                    type="text"
-                    id="signInPagePhone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="Telefone"
-                />
-            </label>
-
+function Address({ swiperRef, data, updateFieldHandler }: AddressProps) {
+  return (
+    <>
+      <div>
+        <RegisterTitle title="ENDEREÇO" />
+        <div className="flex flex-col gap-4">
+          <InputField
+            id="state"
+            type="text"
+            label="Estado:"
+            value={data.state}
+            onChange={updateFieldHandler}
+            placeholder="Estado"
+          />
+          <InputField
+            id="city"
+            type="text"
+            label="Cidade:"
+            value={data.city}
+            onChange={updateFieldHandler}
+            placeholder="Cidade"
+          />
+          <InputField
+            id="street"
+            type="text"
+            label="Rua:"
+            value={data.street}
+            onChange={updateFieldHandler}
+            placeholder="Rua"
+          />
+          <InputField
+            id="postalCode"
+            type="text"
+            label="CEP:"
+            value={data.postalCode}
+            onChange={updateFieldHandler}
+            placeholder="CEP"
+          />
+          <InputField
+            id="phone"
+            type="text"
+            label="Telefone:"
+            value={data.phone}
+            onChange={updateFieldHandler}
+            placeholder="Telefone"
+          />
         </div>
-    );
+      </div>
+      <div className="mt-12 flex space-x-4">
+        <Button
+          onClick={() => swiperRef.current.slidePrev()}
+          label="Anterior"
+        />
+        <Button type="submit" label="Próximo" />
+      </div>
+    </>
+  );
 }
 
 export default Address;
